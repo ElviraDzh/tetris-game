@@ -4,12 +4,268 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tetris by Elvira</title> 
+    <title>Tetris</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="container">
-      <div class="panel">
-        <div class="main-area" id="playArea"></div>
+      <div class="panel clearfix">
+        <div class="score-block">
+          <p class="label">level: <span id="user-level">1000</span></p>
+          <p class="label">lines: <span id="user-lines">10</span></p>
+        </div>
+        <div class="next-block">
+          <div class="next-block-inner">
+            <p class="label">next:</p>
+            <div class="next-figure-bg">
+              <div id="next-figure"></div>
+            </div>
+          </div>
+        </div>
+        <div class="play-area">
+          <svg width="402" height="800">
+            <rect
+              width="402"
+              height="800"
+              style="fill: #403d39; stroke: orangered; stroke-width: 5"
+            />
+            <rect
+              id="square"
+              x="2"
+              y="2"
+              width="36"
+              height="36"
+              style="fill: orange"
+            />
+            <line
+              x1="40"
+              y1="2"
+              x2="40"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="40"
+              x2="400"
+              y2="40"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="80"
+              y1="2"
+              x2="80"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="80"
+              x2="400"
+              y2="80"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="120"
+              y1="2"
+              x2="120"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="120"
+              x2="400"
+              y2="120"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="160"
+              y1="2"
+              x2="160"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="160"
+              x2="400"
+              y2="160"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="200"
+              y1="2"
+              x2="200"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="200"
+              x2="400"
+              y2="200"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="240"
+              y1="2"
+              x2="240"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="240"
+              x2="400"
+              y2="240"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="280"
+              y1="2"
+              x2="280"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="280"
+              x2="400"
+              y2="280"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="320"
+              y1="2"
+              x2="320"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="320"
+              x2="400"
+              y2="320"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="360"
+              y1="2"
+              x2="360"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="360"
+              x2="400"
+              y2="360"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="400"
+              x2="400"
+              y2="400"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="440"
+              y1="2"
+              x2="440"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="440"
+              x2="400"
+              y2="440"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="480"
+              y1="2"
+              x2="480"
+              y2="898"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="480"
+              x2="400"
+              y2="480"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="520"
+              x2="400"
+              y2="520"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="560"
+              x2="400"
+              y2="560"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="600"
+              x2="400"
+              y2="600"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="640"
+              x2="400"
+              y2="640"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="680"
+              x2="400"
+              y2="680"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="720"
+              x2="400"
+              y2="720"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="760"
+              x2="400"
+              y2="760"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="800"
+              x2="400"
+              y2="800"
+              style="stroke: grey; stroke-width: 1"
+            />
+            <line
+              x1="2"
+              y1="840"
+              x2="400"
+              y2="840"
+              style="stroke: grey; stroke-width: 1"
+            />
+          </svg>
+          <div class="figure"></div>
+        </div>
+      </div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>
