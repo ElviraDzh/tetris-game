@@ -295,8 +295,8 @@ function goDown() {
     currentColumn = 4;
     currentRow = -1;
     currentPosition = 0;
-    // copyShapeToModelArray();
-    // changeBgMainArray(modelArray, mainArrayDiv);
+    //copyShapeToModelArray();
+    //changeBgMainArray(modelArray, mainArrayDiv);
     gameOver();
   }
 }
