@@ -302,13 +302,13 @@ function goDown() {
 }
 
 function gameOver() {
-  for (
-    let i = randomShape[currentPosition].length - 1;
-    i < randomShape[currentPosition].length;
-    i++
-  ) {
-    for (let j = 0; j < randomShape[currentPosition][i].length; j++) {
-      if (modelArray[i + 1][currentColumn + j] === "-") {
+  const shape = randomShape[currentPosition];
+  const h = shape.length;
+  const w = shape[0].length;
+
+  for (let i = 0; i < h; i++) {
+    for (let j = 0; j < w; j++) {
+      if (modelArray[i][currentColumn + j] === "-" && shape[i][j] === "*") {
         clearInterval(timerInterval);
         document.querySelector(".game-over").style.display = "block";
       }
