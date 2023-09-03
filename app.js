@@ -295,8 +295,8 @@ function goDown() {
     currentColumn = 4;
     currentRow = -1;
     currentPosition = 0;
-    //copyShapeToModelArray();
-    //changeBgMainArray(modelArray, mainArrayDiv);
+    // copyShapeToModelArray();
+    // changeBgMainArray(modelArray, mainArrayDiv);
     gameOver();
   }
 }
@@ -421,12 +421,20 @@ function canMoveRight() {
 }
 
 function canRotateShape() {
-  const shape = randomShape[currentPosition];
+  let position = currentPosition;
+  position++;
+  if (position > Object.keys(randomShape).length - 1) {
+    position = 0;
+  }
+  const shape = randomShape[position];
   const height = shape.length;
   const width = shape[0].length;
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
-      if (modelArray[currentRow + i + 1][currentColumn + j] === "-") {
+      if (
+        modelArray[currentRow + i][currentColumn + j] === "-" &&
+        shape[i][j] === "*"
+      ) {
         return false;
       }
     }
