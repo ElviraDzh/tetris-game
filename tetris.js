@@ -17,7 +17,7 @@ let randomShape;
 let nextRandomShape = null;
 let nextRandomColor;
 
-const colorArray = ["B", "G", "O", "Y", "W", "P"];
+const colorArray = ["B", "G", "F", "Y", "O", "P"];
 
 let randomNumRow = 0;
 let randomNumColumn = 4;
@@ -141,24 +141,20 @@ const shapes = {
 };
 let shapeKeys = Object.keys(shapes); //["L", "oppositeL", "I", "square", "Z", "oppositeZ, "triangle"]
 p(shapeKeys);
-const createDiv = (id, size) => {
+const createDiv = (id, className) => {
   const newDiv = document.createElement("div");
-  newDiv.style.cssText = `
-  width: ${size};
-  height: ${size};
-  border-bottom:1px solid grey;
-  border-right:1px solid grey;`;
+  newDiv.classList.add(className);
   const area = document.getElementById(`${id}`);
   area.append(newDiv);
 
   return newDiv;
 };
-
+console.log(window.innerHeight);
 function createDivArray() {
   for (let i = 0; i < 20; i++) {
     const array = [];
     for (let j = 0; j < 10; j++) {
-      const div = createDiv("playArea", "32px");
+      const div = createDiv("playArea", "squaresInMainArea");
       array[j] = div;
     }
     mainArrayDiv.push(array);
@@ -172,8 +168,8 @@ createDivArray();
 function createArrayNextShape() {
   for (let i = 0; i < 5; i++) {
     const array = [];
-    for (let j = 0; j < 6; j++) {
-      const div = createDiv("nextFigure", "15px");
+    for (let j = 0; j < 8; j++) {
+      const div = createDiv("nextFigure", "squaresNextShapeBlock");
       array[j] = div;
     }
     nextBlockArray.push(array);
@@ -201,7 +197,7 @@ function displayInNextBlock() {
       //3
       // shapeColumn
       if (nextRandomShape[0][i][j] === "*") {
-        modelArrayNextShape[1 + i][2 + j] = colorArray[nextRandomColor];
+        modelArrayNextShape[1 + i][3 + j] = colorArray[nextRandomColor];
       }
     }
   changeBgMainArray(modelArrayNextShape, nextBlockArray);
@@ -455,9 +451,9 @@ function savePosition() {
       if (
         modelArray[i][j] === "B" ||
         modelArray[i][j] === "G" ||
-        modelArray[i][j] === "O" ||
+        modelArray[i][j] === "F" ||
         modelArray[i][j] === "Y" ||
-        modelArray[i][j] === "W" ||
+        modelArray[i][j] === "O" ||
         modelArray[i][j] === "P"
       ) {
         modelArray[i][j] = "-";
@@ -561,8 +557,6 @@ function rotateShape() {
   const h = shape.length;
   const w = shape[0].length;
 
-  // len = randomShape[currentPosition][0].length;
-
   if (currentColumn + w > 9) {
     currentColumn = 10 - w;
   }
@@ -597,21 +591,73 @@ function changeBgMainArray(modelArr, mainArr) {
         case "P":
           mainArr[i][j].style.backgroundColor = "purple";
           break;
+        case "F":
+          mainArr[i][j].style.backgroundColor = "fuchsia";
+          break;
         case "O":
           mainArr[i][j].style.backgroundColor = "orangered";
           break;
-        case "W":
-          mainArr[i][j].style.backgroundColor = "white";
-          break;
         case "-":
-          mainArr[i][j].style.backgroundColor = "pink";
+          mainArr[i][j].style.backgroundColor = "sandybrown";
           break;
         case "S":
-          mainArr[i][j].style.backgroundColor = "rgb(32, 26, 26)";
-          break;
+          // mainArr[i][j].style.backgroundColor = "rgb(32, 26, 26)";
+          mainArr[i][j].style.backgroundColor = "black";
         default:
           mainArr[i][j].style.backgroundColor = "transparent";
       }
     }
   }
 }
+
+// mobile, planshet
+const arrowLeftBtnMob = document.getElementById("mob-arrow-left");
+const arrowUpBtnMob = document.getElementById("mob-arrow-up");
+const arrowDownBtnMob = document.getElementById("mob-arrow-down");
+const arrowRightBtnMob = document.getElementById("mob-arrow-right");
+
+arrowLeftBtnMob.addEventListener("click", () => {
+  if (paused) return;
+
+  if (canMoveLeft()) {
+    currentColumn--;
+    cleanArray(modelArray);
+    copyShapeToModelArray();
+    changeBgMainArray(modelArray, mainArrayDiv);
+  }
+});
+
+arrowRightBtnMob.addEventListener("click", () => {
+  if (paused) return;
+
+  if (canMoveRight()) {
+    currentColumn++;
+    cleanArray(modelArray);
+    copyShapeToModelArray();
+    changeBgMainArray(modelArray, mainArrayDiv);
+  }
+});
+
+arrowRightBtnMob.addEventListener("click", () => {
+  if (paused) return;
+
+  if (canMoveRight()) {
+    currentColumn++;
+    cleanArray(modelArray);
+    copyShapeToModelArray();
+    changeBgMainArray(modelArray, mainArrayDiv);
+  }
+});
+
+arrowUpBtnMob.addEventListener("click", () => {
+  if (paused) return;
+  if (canRotateShape()) {
+    cleanArray(modelArray);
+    rotateShape();
+    changeBgMainArray(modelArray, mainArrayDiv);
+  }
+});
+
+arrowDownBtnMob.addEventListener("click", () => {
+  goDown();
+});
