@@ -56,12 +56,13 @@ img {
   padding: 0.7em;
 }
 
-.score-block .wrap-score-1 {
+.wrap-score-1 {
   border-bottom: none;
 }
 
 .text-next-shape,
-.text-score-block {
+.text-score-block,
+.subtitle-score-block {
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -114,7 +115,7 @@ img {
 
   border: none;
   border-radius: 0.4em;
-  font-weight: 500;
+  font-weight: 900;
   margin: 0 auto 1em auto;
 }
 .btn:hover {
@@ -137,16 +138,26 @@ img {
 .arrow-btn {
   margin: 0px 0.2em 0 0.2em;
   background-color: #457b9d;
+
   border: none;
   border-radius: 0.5em;
   padding: 1.1em;
   box-shadow: 1px 1px 1px 1px #0096c7;
 }
 .arrow-btn:hover {
-  background: linear-gradient(to bottom, #457b9d, #0096c7);
+  transform: scale(1.1);
+  background: linear-gradient(
+    to right top,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
 }
 .arrow-btn i {
   font-size: 1.3em;
+  color: #fff;
 }
 #mob-arrow-up {
   position: absolute;
@@ -167,12 +178,28 @@ img {
   z-index: 10;
   display: none;
 }
-.game-over .game-over-title {
+.game-over .game-over-title,
+.score-block-gameOver {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3rem;
+  font-size: 3em;
+}
+
+.game-over .game-over-title {
+  font-size: 4em;
+  font-family: cursive;
+}
+
+.score-block-gameOver {
+  width: 80%;
+  font-size: 2em;
+  top: 55%;
+}
+
+.result-gameOver {
+  text-align: center;
 }
 
 .squaresInMainArea {
